@@ -1,0 +1,73 @@
+:root {
+  --bg: #0f1117;
+  --bg-2: #171a23;
+  --bg-3: #1f2330;
+  --fg: #e7e9ee;
+  --fg-dim: #98a0b0;
+  --border: #2a2f3d;
+  --accent: #6366f1;
+  --danger: #ef4444;
+}
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+
+.boot { display: grid; place-items: center; height: 100vh; color: var(--fg-dim); }
+.muted { color: var(--fg-dim); }
+.err { color: var(--danger); margin: 0; font-size: 0.9rem; }
+
+/* auth */
+.auth-wrap { display: grid; place-items: center; min-height: 100vh; padding: 1rem; }
+.auth-card { background: var(--bg-2); padding: 2rem; border-radius: 14px; width: 100%; max-width: 380px; border: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.75rem; }
+.auth-card h1 { margin: 0; }
+.auth-card label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.85rem; color: var(--fg-dim); }
+.auth-card input, .toolbar input, .add input, .task input, .task textarea, .task select, .filters input {
+  background: var(--bg-3); color: var(--fg); border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.75rem; font: inherit;
+}
+.switch { font-size: 0.9rem; color: var(--fg-dim); margin: 0.25rem 0 0; }
+.link { background: none; border: none; color: var(--accent); cursor: pointer; padding: 0; font: inherit; }
+
+/* buttons */
+.btn { padding: 0.55rem 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-3); color: var(--fg); cursor: pointer; font-weight: 600; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: white; }
+.btn.ghost { background: transparent; }
+.btn.small { padding: 0.35rem 0.7rem; font-size: 0.8rem; }
+.btn.danger { color: var(--danger); border-color: transparent; }
+
+/* topbar */
+.app { padding: 1.25rem 1.5rem 3rem; max-width: 1200px; margin: 0 auto; }
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.topbar h1 { margin: 0; font-size: 1.4rem; }
+.topbar-right { display: flex; gap: 0.75rem; align-items: center; }
+
+/* toolbar */
+.toolbar { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.add { display: flex; gap: 0.5rem; flex: 1; min-width: 280px; }
+.add input { flex: 1; }
+.filters { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.chip { background: var(--bg-3); border: 1px solid var(--border); color: var(--fg-dim); padding: 0.3rem 0.7rem; border-radius: 999px; cursor: pointer; font-size: 0.85rem; }
+.chip.on { background: var(--accent); color: white; border-color: var(--accent); }
+
+/* board */
+.board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; align-items: start; }
+.col { background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem; min-height: 200px; transition: border-color 0.15s; }
+.col.over { border-color: var(--accent); }
+.col header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+.col h3 { margin: 0; font-size: 1rem; }
+.count { background: var(--bg-3); border-radius: 999px; padding: 0.1rem 0.55rem; font-size: 0.75rem; color: var(--fg-dim); }
+.empty { color: var(--fg-dim); text-align: center; font-size: 0.85rem; padding: 1rem; }
+
+/* task */
+.task { background: var(--bg-3); border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem; margin-bottom: 0.5rem; position: relative; }
+.task-handle { position: absolute; right: 0.5rem; top: 0.45rem; color: var(--fg-dim); cursor: grab; user-select: none; }
+.task-top { display: flex; gap: 0.5rem; align-items: center; }
+.task-top strong { cursor: text; }
+.task .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.task .row { display: flex; gap: 0.4rem; margin-top: 0.5rem; align-items: center; }
+.task textarea { width: 100%; min-height: 60px; resize: vertical; }
+.task .edit { display: flex; flex-direction: column; gap: 0.4rem; }
+
+@media (max-width: 800px) {
+  .board { grid-template-columns: 1fr; }
+}
