@@ -21,11 +21,28 @@ export default function Auth({ onAuth }) {
     } finally { setBusy(false) }
   }
 
+  const isDemo = !import.meta.env.VITE_API_URL
+
   return (
     <div className="auth-wrap">
       <form className="auth-card" onSubmit={submit}>
         <h1>TaskFlow</h1>
         <p className="muted">{mode === 'login' ? 'Welcome back.' : 'Create your account.'}</p>
+        {isDemo && (
+          <div style={{
+            padding: '10px 12px',
+            marginBottom: 14,
+            background: 'rgba(239,68,68,0.12)',
+            border: '1px solid rgba(239,68,68,0.35)',
+            borderRadius: 6,
+            fontSize: 13,
+            color: '#ef4444',
+            lineHeight: 1.4
+          }}>
+            <strong>Demo mode</strong> — any email + 8+ char password works.
+            Tasks persist in your browser.
+          </div>
+        )}
         <label>Email
           <input type="email" required value={email} onChange={e => setEmail(e.target.value)} />
         </label>
